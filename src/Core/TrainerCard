@@ -1,0 +1,18 @@
+namespace PokemonAnalysisProject.Core
+{
+    public enum TrainerType
+    {
+        Item,
+        Supporter,
+        Stadium, 
+        Tool
+    }
+    public class TrainerCard : Card
+    {
+        public TrainerType Type { get; set; }
+        public string Effect { get; set; }
+
+        public override bool IsValid() =>
+            base.IsValid() && !string.IsNullOrEmpty(Effect);
+    }
+}
