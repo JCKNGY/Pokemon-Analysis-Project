@@ -11,70 +11,71 @@ namespace PokemonAnalysisProject.Core.Probability
     */
     public static class ProbabilityEngine
     {
+
         // TODO: Write Combinations(n, r) -> "n choose r"
-        // Use the multiplicative formula (loop), NOT factorials directly,
-        // to avoid overflow with N=60.
-        // result = result * (n - i) / (i + 1) for i in [0, r)
+        public static double Combinations(int n, int r)
+        {
+            if (r < 0 || r > n) 
+                return 0.0;
 
 
+            if (r == 0 || r == n) 
+                return 1.0;
 
 
+            if (r > n - r) 
+                r = n - r;
 
+            double result = 1.0;
+            for (int i = 0; i < r; i++)
+            {
+                result = result * (n - i) / (i + 1);
+            }
 
-
-
-
+            return result;
+        }
         // TODO: Write Pmf(N, K, n, k) -> probability of EXACTLY k successes
-        // N = deck size, K = copies of target card in deck,
-        // n = cards drawn/seen, k = desired number drawn
-        // formula: [C(K,k) * C(N-K, n-k)] / C(N,n)
-        // guard: if k > K, k > n, or (n-k) > (N-K) return 0
-        
-        
+        public static double Pmf(int N, int K, int n, int k)
+        {
+            
+            if (k > K) 
+                return 0.0;
+            if (k > n) 
+                return 0.0;
+            if ((n - k) > (N - K)) 
+                return 0.0;
+            if (k < 0 || n < 0 || N < 0 || K < 0) 
+                return 0.0;
+            if (n > N) 
+                return 0.0;
 
+            double numerator = Combinations(K, k) * Combinations(N - K, n - k);
+            double denominator = Combinations(N, n);
 
+            if (denominator == 0.0) 
+                return 0.0;
 
-
-
-
-
+            return numerator / denominator;
+        }
 
         // TODO: Write AtLeast(N, K, n, k) -> probability of k OR MORE successes
-        // sum Pmf from i = k to min(K, n)
+        public static double AtLeast(int N, int K, int n, int k)
+        {
+            double total = 0.0;
+            int upperBound = System.Math.Min(K, n);
 
+            for (int i = k; i <= upperBound; i++)
+            {
+                total += Pmf(N, K, n, i);
+            }
 
-        
-
-
-
-
-
-
-
+            return total;
+        }
         // TODO: Write None(N, K, n) -> probability of ZERO successes
-        // shortcut: just call Pmf(N, K, n, 0)
-        // you'll use this constantly (mulligans, combos, "whiff" odds)
-
-
-        
-
-
-
-
-
-
-
-        // TODO: Test this whole class by hand before building anything on top.
-        // Sanity check example: N=60, K=4, n=7 
-        // -> compare against an online hypergeometric calculator
-
-        
-
-
-
-
-
-
-
+        // Probability of ZERO successes (mulligans)
+        public static double None(int N, int K, int n)
+        {
+            return Pmf(N, K, n, 0);
+        }
     }
 }

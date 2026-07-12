@@ -3,7 +3,10 @@ namespace PokemonAnalysisProject.Core.Probability
     public static class MulliganService
     {
         // TODO: Odds of ZERO Basic Pokemon in opening hand
-        // basicCount = deck.CountBasicPokemon()
-        // return None(60, basicCount, 7)
+
+        public static double MulliganOdds(int basicCount, int deckSize = 60)
+        {
+            return ProbabilityEngine.None(deckSize, basicCount, 7);
+        }
     }
 }
