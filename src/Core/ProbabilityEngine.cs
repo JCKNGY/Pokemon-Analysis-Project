@@ -13,6 +13,10 @@ namespace PokemonAnalysisProject.Core.Probability
     {
 
         // TODO: Write Combinations(n, r) -> "n choose r"
+
+
+        //Math equation used :    C(n, r) = n! / (r! × (n - r)!)
+        //Ex: C(4,1) = 4! / (1! × 3!) = 24 / (1 × 6) = 4
         public static double Combinations(int n, int r)
         {
             if (r < 0 || r > n) 
@@ -35,6 +39,9 @@ namespace PokemonAnalysisProject.Core.Probability
             return result;
         }
         // TODO: Write Pmf(N, K, n, k) -> probability of EXACTLY k successes
+
+        //Math equation used: Pmf(N, K, n, k) = [C(K, k) × C(N-K, n-k)] / C(N, n)
+        //Ex: Pmf = (favorable hands with exactly k target cards) / (all possible hands)
         public static double Pmf(int N, int K, int n, int k)
         {
             
