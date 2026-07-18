@@ -1,6 +1,6 @@
 namespace PokemonAnalysisProject.Core.Probability
 {
-    public static class MulliganService
+    public static class MulliganCalculator
     {
         // TODO: Odds of ZERO Basic Pokemon in opening hand
 
