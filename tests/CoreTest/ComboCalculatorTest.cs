@@ -1,6 +1,9 @@
 using Xunit;
 using PokemonAnalysisProject.Core.Probability;
-public class ComboCalculatorTests
+
+namespace PokemonAnalysisProject.Core.Tests.Probability
+{
+    public class ComboCalculatorTests
     {
         [Fact]
         public void OddsOfBoth_Is_Lower_Than_Either_Individual_Card()
@@ -13,3 +16,4 @@ public class ComboCalculatorTests
             Assert.True(bothOdds < oddsB);
         }
     }
+}

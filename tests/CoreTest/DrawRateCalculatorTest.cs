@@ -1,6 +1,9 @@
 using Xunit;
 using PokemonAnalysisProject.Core.Probability;
-public class DrawRateCalculatorTests
+
+namespace PokemonAnalysisProject.Core.Tests.Probability
+{
+    public class DrawRateCalculatorTests
     {
         [Fact]
         public void OpeningHandOdds_Matches_ProbabilityEngine_AtLeast()
@@ -20,3 +23,4 @@ public class DrawRateCalculatorTests
             Assert.Equal(expected, actual, precision: 10);
         }
     }
+}

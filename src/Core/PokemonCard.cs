@@ -28,6 +28,7 @@ namespace PokemonAnalysisProject.Core
     public PokemonType PokemonType { get; set; }   // Fire, Water, Grass etc.
     public PokemonStage Stage { get; set; }          // Basic, Stage 1, Stage 2, Mega
     public string EvolvesFrom { get; set; }    // name of the previous stage
+    public List<Ability> Abilities { get; set; }
     public List<Attack> Attacks { get; set; }
     public string Weakness { get; set; }
     public string Resistance { get; set; }
@@ -39,6 +40,7 @@ namespace PokemonAnalysisProject.Core
         PokemonType = PokemonType.Colorless;
         Stage = PokemonStage.Basic;
         EvolvesFrom = string.Empty;
+        Abilities = new List<Ability>();
         Attacks = new List<Attack>();
         Weakness = string.Empty;
         Resistance = string.Empty;

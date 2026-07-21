@@ -28,8 +28,13 @@ namespace PokemonAnalysisProject.Core
         public bool IsValid() =>
             !string.IsNullOrWhiteSpace(Name);
 
-        public override string ToString() =>
-            $"{Name} - Cost: {EnergyCostTotal} - Damage: {Damage}";
+        public override string ToString()
+        {
+            var parts = $"{Name} - Cost: {EnergyCostTotal}";
+            if (!string.IsNullOrEmpty(Damage)) parts += $" - Damage: {Damage}";
+            if (!string.IsNullOrEmpty(Effect))  parts += $" - Effect: {Effect}";
+            return parts;
+        }
 
 
     } 

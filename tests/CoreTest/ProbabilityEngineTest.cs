@@ -18,7 +18,7 @@ namespace PokemonAnalysisProject.Core.Tests.Probability
         [Fact]
         public void Pmf_Matches_Known_Hand_Calculated_Value()
         {
-            // TODO: Arrange - use your N=60, K=4, n=7, k=1 sanity check numbers
+            // TODO: Arrange - use your N=60, K=4, n=7, k=1 
 
             double answer = ProbabilityEngine.Pmf(60, 4, 7, 1);
 
@@ -39,9 +39,8 @@ namespace PokemonAnalysisProject.Core.Tests.Probability
         [Fact]
         public void AtLeast_Matches_Known_Hand_Calculated_Value()
         {
-            // TODO: same idea as Pmf test above, but for AtLeast
             double answer = ProbabilityEngine.AtLeast(60, 4, 7, 1);
-            Assert.Equal(0, answer, precision: 4);
+            Assert.Equal(0.3995, answer, precision: 4);
         }
         [Fact]
         public void None_With_Zero_Copies_Always_Returns_One()
